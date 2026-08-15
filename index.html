@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arrabon Holding — We build and operate the software small businesses run on</title>
+<meta name="description" content="Arrabon builds and operates the software small businesses run on. Built first, proven in production, then licensed monthly. Pretoria, South Africa.">
+<meta property="og:title" content="Arrabon Holding">
+<meta property="og:description" content="We build and operate the software small businesses run on. Pretoria, South Africa.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2308090c'/%3E%3Ccircle cx='32' cy='32' r='11' fill='%2335b06a'/%3E%3C/svg%3E">
+<script src="./support.js"></script>
+<meta name="ext-resource-dependency" content="https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json" data-resource-id="land110" />
+<meta name="ext-resource-dependency" content="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json" data-resource-id="countries50" />
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arrabon Holding — We build and operate the software small businesses run on</title>
+<style>/* Satoshi */
+@font-face {
+  font-family: 'Satoshi';
+  src: url("fonts/satoshi-300.woff2") format('woff2'),
+       url("fonts/satoshi-300.woff") format('woff'),
+       url("fonts/satoshi-300.ttf") format('truetype');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url("fonts/satoshi-400.woff2") format('woff2'),
+       url("fonts/satoshi-400.woff") format('woff'),
+       url("fonts/satoshi-400.ttf") format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url("fonts/satoshi-500.woff2") format('woff2'),
+       url("fonts/satoshi-500.woff") format('woff'),
+       url("fonts/satoshi-500.ttf") format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url("fonts/satoshi-700.woff2") format('woff2'),
+       url("fonts/satoshi-700.woff") format('woff'),
+       url("fonts/satoshi-700.ttf") format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url("fonts/satoshi-900.woff2") format('woff2'),
+       url("fonts/satoshi-900.woff") format('woff'),
+       url("fonts/satoshi-900.ttf") format('truetype');
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* Clash Grotesk */
+@font-face {
+  font-family: 'Clash Grotesk';
+  src: url("fonts/clash-grotesk.woff2") format('woff2'),
+       url("fonts/clash-grotesk.woff") format('woff'),
+       url("fonts/clash-grotesk.ttf") format('truetype');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<style>
+  :root { --ac: #35b06a; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #08090c; color: #eceef2; font-family: Satoshi, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--ac); }
+  ::selection { background: var(--ac); color: #08090c; }
+  @keyframes mq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
+  @keyframes mqr { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  @keyframes drift { 0% { transform: translate3d(-6%, -4%, 0) scale(1); } 50% { transform: translate3d(8%, 6%, 0) scale(1.25); } 100% { transform: translate3d(-6%, -4%, 0) scale(1); } }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes breathe { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
+
+  /* Vision arrow: rightward sweep on desktop, downward variant on mobile */
+  .arrow-m { display: none; }
+
+  /* ── Mobile flow (inline desktop styles overridden per-section) ── */
+  @media (max-width: 760px) {
+    .arrow-d { display: none; }
+    .arrow-m { display: block; margin-left: 4px; }
+
+    /* Tighter section rhythm */
+    section[data-screen-label="Why we exist"] { padding: 96px 32px !important; }
+    #systems { padding: 0 32px 96px !important; }
+    section[data-screen-label="Name band"] { padding: 88px 32px !important; }
+    section[data-screen-label="Client proof"] { padding: 0 32px 96px !important; }
+    section[data-screen-label="Founder"] { padding: 0 32px 96px !important; }
+
+    /* Hero: extra bottom-up veil so copy stays legible over the globe */
+    .hero-veil { background:
+      linear-gradient(0deg, rgba(8,9,12,0.92) 0%, rgba(8,9,12,0.55) 38%, rgba(8,9,12,0) 72%),
+      linear-gradient(90deg, #08090c 8%, rgba(8,9,12,0.8) 45%, rgba(8,9,12,0.1) 85%) !important; }
+
+    /* Proof strip: 2×2 grid, no vertical dividers */
+    section[data-screen-label="Proof strip"] > div { grid-template-columns: repeat(2, 1fr) !important; gap: 0 24px !important; }
+    section[data-screen-label="Proof strip"] > div > div { border-right: none !important; padding: 26px 0 !important; }
+    section[data-screen-label="Proof strip"] > div > div:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    section[data-screen-label="Proof strip"] > div > div > div:first-child { font-size: 27px !important; }
+
+    /* Portfolio cards: copy first, media below it, let tag rows wrap */
+    [data-card] { grid-template-columns: 1fr !important; gap: 26px !important; padding: 40px 0 !important; }
+    [data-card] > div:first-child { order: 2; }
+    [data-card] > div:last-child { order: 1; }
+    [data-card] > div > div:first-child { flex-wrap: wrap !important; row-gap: 9px !important; }
+
+    /* Method: vertical timeline instead of a 980px horizontal board */
+    .mth-scroll { overflow-x: visible !important; margin: 0 !important; padding: 0 !important; }
+    .mth-wide { min-width: 0 !important; }
+    .mth-head { display: none !important; }
+    .mth-grid { grid-template-columns: 1fr !important; row-gap: 14px !important; background: none !important; padding: 4px 0 10px !important; }
+    .mth-grid [data-step] { grid-column: auto !important; grid-row: auto !important; margin: 0 !important; }
+  }
+
+</style>
+</helmet>
+
+<div style="position:relative; width:100%; overflow:hidden">
+
+  <nav style="position:fixed; top:0; left:0; right:0; z-index:50; display:flex; justify-content:center; padding:20px 20px 0; pointer-events:none">
+    <div data-nav="1" style="pointer-events:auto; position:relative; display:flex; align-items:center; gap:clamp(14px,2.6vw,40px); padding:9px 10px 9px 20px; border-radius:999px; max-width:100%; border:1px solid rgba(255,255,255,0.12); background:rgba(14,17,20,0.55); backdrop-filter:blur(16px); box-shadow:0 18px 50px rgba(0,0,0,0.45); overflow:hidden; transition:background .35s ease, border-color .35s ease, box-shadow .35s ease">
+      <a href="#top" style="display:flex; align-items:center; gap:9px; padding-right:6px">
+        <span style="width:6px; height:6px; background:var(--ac,#35b06a); display:block; border-radius:50%"></span>
+        <span style="font-size:15px; letter-spacing:0.14em; font-weight:900">ARRABON</span>
+      </a>
+      <div data-navlinks="1" style="display:flex; align-items:center; gap:clamp(12px,2.2vw,30px); font-size:15px; font-weight:500; color:#c9ced1">
+        <a href="#systems">Systems</a>
+        <a href="#approach">Approach</a>
+        <a href="#about">About</a>
+      </div>
+      <a href="mailto:hello@arrabon.co.za" style="display:flex; align-items:center; gap:8px; background:linear-gradient(120deg, var(--ac,#35b06a), #127a3c); color:#08090c; font-size:15px; font-weight:700; padding:12px 20px; border-radius:999px; white-space:nowrap" data-navcta="1" style-hover="background:#eceef2">Get in touch</a>
+      <div style="position:absolute; left:0; bottom:0; height:2px; width:100%; background:linear-gradient(90deg, var(--ac,#35b06a), #127a3c); transform:scaleX(0); transform-origin:0 50%; opacity:.9" data-progress="1"></div>
+    </div>
+  </nav>
+  <section id="top" data-screen-label="Hero" style="position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end; padding:120px 32px 0; overflow:hidden">
+    <div data-hero-media="1" style="position:absolute; inset:0; z-index:0; overflow:hidden; background:#08090c; will-change:transform">
+      <canvas data-globe="1" style="position:absolute; top:50%; right:-20vw; transform:translateY(-50%); width:clamp(520px, 74vw, 1120px); height:clamp(520px, 74vw, 1120px); opacity:0.85"></canvas>
+    </div>
+    <div class="hero-veil" style="position:absolute; inset:0; z-index:1; background:linear-gradient(90deg, #08090c 12%, rgba(8,9,12,0.85) 45%, rgba(8,9,12,0.15) 78%, rgba(8,9,12,0) 100%)"></div>
+
+    <div style="position:relative; z-index:2; max-width:1280px; margin:0 auto; width:100%; padding-bottom:56px">
+      <div data-reveal="1" data-delay="0" style="opacity:0; transform:translateY(18px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); font-size:11px; font-weight:700; letter-spacing:0.22em; color:var(--ac,#35b06a); margin-bottom:28px">SOFTWARE COMPANY · PRETORIA, SOUTH AFRICA</div>
+      <h1 style="margin:0; font-size:clamp(38px, 6.4vw, 96px); line-height:0.98; font-weight:900; letter-spacing:-0.04em; max-width:19ch; text-wrap:balance">
+        <span data-reveal="1" data-delay="60" style="display:inline-block; opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1)">We&nbsp;build</span>
+        <span data-reveal="1" data-delay="140" style="display:inline-block; opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1)">and&nbsp;operate</span>
+        <span data-reveal="1" data-delay="220" style="display:inline-block; opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1)">the&nbsp;software</span>
+        <span data-reveal="1" data-delay="300" style="display:inline-block; opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); color:var(--ac,#35b06a)">small&nbsp;businesses</span>
+        <span data-reveal="1" data-delay="380" style="display:inline-block; opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); color:var(--ac,#35b06a)">run&nbsp;on.</span>
+      </h1>
+      <div data-reveal="1" data-delay="520" style="opacity:0; transform:translateY(18px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:32px; margin-top:44px">
+        <p style="margin:0; max-width:46ch; font-size:17px; line-height:1.6; color:#b4b7c0">Arrabon turns operations drowning in WhatsApp messages and spreadsheets into systems that run quietly. Built first, proven in production, then licensed monthly.</p>
+        <a href="#systems" style="display:flex; align-items:center; gap:12px; font-size:11px; font-weight:700; letter-spacing:0.2em; border:1px solid rgba(255,255,255,0.16); padding:16px 22px" style-hover="border-color:var(--ac,#35b06a); color:var(--ac,#35b06a)">SEE THE SYSTEMS <span style="display:inline-block; animation:bob 2.4s ease-in-out infinite">↓</span></a>
+      </div>
+    </div>
+
+    <div style="position:relative; z-index:2; border-top:1px solid rgba(255,255,255,0.10); overflow:hidden; white-space:nowrap">
+      <div data-marquee="1" style="display:inline-flex; animation:mq 34s linear infinite; will-change:transform">
+        <span style="display:inline-flex; gap:44px; padding:16px 22px 16px 0; font-size:11px; font-weight:600; letter-spacing:0.24em; color:#8b8f99">
+          <span>LET'S MAKE IT HAPPEN</span><span style="color:var(--ac,#35b06a)">·</span><span>ANYTHING IS POSSIBLE</span><span style="color:var(--ac,#35b06a)">·</span><span>ARRABON · ἀρραβών</span><span style="color:var(--ac,#35b06a)">·</span><span>PROOF OVER PROMISE</span><span style="color:var(--ac,#35b06a)">·</span><span>BUILT FOR THE OVERLOOKED</span><span style="color:var(--ac,#35b06a)">·</span>
+        </span>
+        <span style="display:inline-flex; gap:44px; padding:16px 22px 16px 0; font-size:11px; font-weight:600; letter-spacing:0.24em; color:#8b8f99">
+          <span>LET'S MAKE IT HAPPEN</span><span style="color:var(--ac,#35b06a)">·</span><span>ANYTHING IS POSSIBLE</span><span style="color:var(--ac,#35b06a)">·</span><span>ARRABON · ἀρραβών</span><span style="color:var(--ac,#35b06a)">·</span><span>PROOF OVER PROMISE</span><span style="color:var(--ac,#35b06a)">·</span><span>BUILT FOR THE OVERLOOKED</span><span style="color:var(--ac,#35b06a)">·</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Proof strip" style="border-bottom:1px solid rgba(255,255,255,0.08); padding:0 32px">
+    <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr))">
+      <div data-reveal="1" data-delay="0" style="opacity:0; transform:translateY(16px); transition:opacity .8s ease, transform .8s ease; padding:36px 28px 36px 0; border-right:1px solid rgba(255,255,255,0.08)">
+        <div style="font-size:32px; font-weight:900; letter-spacing:-0.03em">2026</div>
+        <div style="margin-top:8px; font-size:11px; font-weight:600; letter-spacing:0.14em; color:#8b8f99">ESTABLISHED</div>
+      </div>
+      <div data-reveal="1" data-delay="90" style="opacity:0; transform:translateY(16px); transition:opacity .8s ease, transform .8s ease; padding:36px 28px; border-right:1px solid rgba(255,255,255,0.08)">
+        <div style="font-size:32px; font-weight:900; letter-spacing:-0.03em">40+</div>
+        <div style="margin-top:8px; font-size:11px; font-weight:600; letter-spacing:0.14em; color:#8b8f99">DAILY USERS ON OUR FIRST PRODUCT</div>
+      </div>
+      <div data-reveal="1" data-delay="180" style="opacity:0; transform:translateY(16px); transition:opacity .8s ease, transform .8s ease; padding:36px 28px; border-right:1px solid rgba(255,255,255,0.08)">
+        <div style="font-size:32px; font-weight:900; letter-spacing:-0.03em">50–80</div>
+        <div style="margin-top:8px; font-size:11px; font-weight:600; letter-spacing:0.14em; color:#8b8f99">WHATSAPP MESSAGES A DAY, REPLACED</div>
+      </div>
+      <div data-reveal="1" data-delay="270" style="opacity:0; transform:translateY(16px); transition:opacity .8s ease, transform .8s ease; padding:36px 0 36px 28px">
+        <div style="font-size:32px; font-weight:900; letter-spacing:-0.03em">Pretoria</div>
+        <div style="margin-top:8px; font-size:11px; font-weight:600; letter-spacing:0.14em; color:#8b8f99">SOUTH AFRICA</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" data-screen-label="Why we exist" style="padding:140px 32px">
+    <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap:clamp(40px,5vw,80px); align-items:start">
+
+      <div style="position:sticky; top:120px">
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.22em; color:#8b8f99">01 — OUR VISION</div>
+        <h2 data-reveal="1" data-delay="0" style="margin:26px 0 0; font-size:clamp(38px,5.4vw,74px); line-height:0.96; font-weight:900; letter-spacing:-0.04em; opacity:0; transform:translateY(22px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)">We started Arrabon to build the software <span style="color:var(--ac,#35b06a)">nobody was going to build for them.</span></h2>
+        <div data-reveal="1" data-delay="220" style="margin-top:30px; opacity:0; transform:translateY(16px); transition:opacity .9s ease, transform .9s ease; max-width:420px">
+          <svg class="arrow-d" sc-camel-view-box="0 0 420 40" width="100%" height="40" fill="none" aria-hidden="true">
+            <path d="M4 10C90 34 250 36 404 22" stroke="#eceef2" stroke-width="1.6" stroke-linecap="round"></path>
+            <path d="M392 12L406 22L390 30" stroke="#eceef2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <svg class="arrow-m" sc-camel-view-box="0 0 120 100" width="72" height="60" fill="none" aria-hidden="true">
+            <path d="M8 6C64 14 92 40 90 84" stroke="#eceef2" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M78 74L90 89L103 76" stroke="#eceef2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div data-reveal="1" data-delay="120" style="opacity:0; transform:translateY(26px); transition:opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1); background:#0e1512; border:1px solid rgba(255,255,255,0.07); border-radius:6px; padding:clamp(28px,3.6vw,56px); box-shadow:0 30px 70px rgba(0,0,0,0.45)">
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.2em; color:var(--ac,#35b06a)">FOUNDER —</div>
+        <div style="margin-top:26px; display:grid; gap:22px; font-size:clamp(16px,1.25vw,18px); line-height:1.62; color:#c0c3cb; text-wrap:pretty">
+          <p style="margin:0"><span style="font-weight:900; color:#eceef2">Michael Cockcroft came into technology with no IT background.</span> He was given an opportunity he didn't yet have the skills for, and made the most of it. More than two years later: deep platform expertise and enterprise clients across South Africa.</p>
+          <p style="margin:0">Along the way, a conviction that wouldn't leave him alone — if a system can make a business run better, it should be possible to build it. For anyone. Not only for the companies large enough to be worth an enterprise vendor's attention.</p>
+          <p style="margin:0; font-size:clamp(19px,1.7vw,25px); line-height:1.36; font-weight:900; letter-spacing:-0.02em; color:#f4f5f8"><span style="background:linear-gradient(100deg, rgba(53,176,106,0.26), rgba(18,122,60,0.24)); box-shadow:0 0 0 6px rgba(53,176,106,0.22)">So we build those systems ourselves — and then we run them.</span></p>
+          <p style="margin:0">Our first product, PetCare, runs the daily operations of a Pretoria pet-care agency coordinating more than forty sitters. Work that used to arrive as fifty to eighty WhatsApp messages a day now lives in one system.</p>
+        </div>
+        <div style="margin-top:36px; padding-top:26px; border-top:1px solid rgba(255,255,255,0.09)">
+          <div style="font-size:11px; font-weight:700; letter-spacing:0.2em; color:#8b8f99">TODAY, ARRABON RUNS</div>
+          <div style="margin-top:20px; display:grid; gap:14px; font-size:16px; line-height:1.5; color:#c0c3cb">
+            <div style="display:flex; gap:14px"><span style="color:var(--ac,#35b06a)">01</span><span>A job-management platform coordinating <span style="color:#eceef2; font-weight:700">40+ pet sitters</span> in Pretoria.</span></div>
+            <div style="display:flex; gap:14px"><span style="color:var(--ac,#35b06a)">02</span><span>A client and credit-check platform in build for a <span style="color:#eceef2; font-weight:700">mortgage originator</span>.</span></div>
+            <div style="display:flex; gap:14px"><span style="color:var(--ac,#35b06a)">03</span><span>A new venture with an established operating partner — <span style="color:#eceef2; font-weight:700">announcement to follow</span>.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="systems" data-screen-label="Systems portfolio" style="padding:0 32px 140px">
+    <div style="max-width:1280px; margin:0 auto">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:32px; padding-bottom:32px; border-bottom:1px solid rgba(255,255,255,0.10)">
+        <h2 style="margin:0; font-size:clamp(30px, 4.6vw, 64px); font-weight:900; letter-spacing:-0.04em; line-height:1">The systems<br><span style="color:var(--ac,#35b06a)">we run</span></h2>
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.2em; color:#8b8f99">02 — PORTFOLIO</div>
+      </div>
+
+      <a href="#contact" data-card="1" data-reveal="1" data-delay="0" style="display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:48px; align-items:center; padding:44px 0; border-bottom:1px solid rgba(255,255,255,0.10); opacity:0; transform:translateY(24px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)">
+        <div style="position:relative; overflow:hidden; aspect-ratio:16/10; background:radial-gradient(120% 100% at 30% 0%, #141d18, #0a0e0c)">
+          <div style="position:absolute; inset:0; background:radial-gradient(60% 60% at 72% 78%, rgba(53,176,106,0.16), transparent 70%), radial-gradient(50% 50% at 18% 85%, rgba(18,122,60,0.14), transparent 72%)"></div>
+          <div data-card-media="1" style="position:absolute; inset:0; display:flex; align-items:flex-start; justify-content:center; gap:2.5%; padding:5% 5% 0; transition:transform .8s cubic-bezier(.2,.7,.2,1)">
+            <img src="assets/mock-jobs.png" alt="PetCare — all jobs list with applicants" style="display:block; width:27%; margin-top:9%; filter:drop-shadow(0 26px 42px rgba(0,0,0,0.6))">
+            <img src="assets/mock-home.png" alt="PetCare — manager home showing today's active jobs" style="display:block; width:31%; filter:drop-shadow(0 32px 54px rgba(0,0,0,0.7))">
+            <img src="assets/mock-week.png" alt="PetCare — this week's schedule across every team" style="display:block; width:27%; margin-top:9%; filter:drop-shadow(0 26px 42px rgba(0,0,0,0.6))">
+          </div>
+        </div>
+        <div>
+          <div style="display:flex; align-items:center; gap:14px; font-size:10px; font-weight:600; letter-spacing:0.18em; color:#8b8f99">
+            <sc-if value="{{ showRefCodes }}" hint-placeholder-val="{{ true }}"><span style="color:var(--ac,#35b06a)">ARB-P-01</span></sc-if>
+            <span>PET SERVICES · SAAS</span>
+            <span style="border:1px solid rgba(53,176,106,0.5); color:var(--ac,#35b06a); padding:5px 10px">OPERATING</span>
+          </div>
+          <h3 style="margin:18px 0 0; font-size:clamp(26px, 3vw, 40px); font-weight:900; letter-spacing:-0.03em">PetCare</h3>
+          <p style="margin:14px 0 0; max-width:44ch; font-size:16px; line-height:1.62; color:#b4b7c0">Job-management platform for pet-sitting agencies. Runs scheduling, job posting and sitter coordination for an agency of 40+ sitters — replacing the 50–80 WhatsApp messages a day it took to run the business.</p>
+          <span style="display:inline-flex; align-items:center; gap:10px; margin-top:24px; font-size:11px; font-weight:700; letter-spacing:0.2em; color:var(--ac,#35b06a)">LIVE SINCE JUL 2026 ↗</span>
+        </div>
+      </a>
+
+      <a href="#contact" data-card="1" data-reveal="1" data-delay="80" style="display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:48px; align-items:center; padding:44px 0; border-bottom:1px solid rgba(255,255,255,0.10); opacity:0; transform:translateY(24px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)">
+        <div style="overflow:hidden; aspect-ratio:16/10; background:radial-gradient(120% 100% at 30% 0%, #141d18, #0a0e0c); display:flex; align-items:center; justify-content:center">
+          <span data-card-media="1" style="font-size:10px; font-weight:600; letter-spacing:0.18em; color:rgba(233,234,234,0.3); transition:transform .8s cubic-bezier(.2,.7,.2,1)">[ ORIGINATION CRM — PIPELINE VIEW ]</span>
+        </div>
+        <div>
+          <div style="display:flex; align-items:center; gap:14px; font-size:10px; font-weight:600; letter-spacing:0.18em; color:#8b8f99">
+            <sc-if value="{{ showRefCodes }}" hint-placeholder-val="{{ true }}"><span style="color:var(--ac,#35b06a)">ARB-C-02</span></sc-if>
+            <span>FINANCIAL SERVICES · CLIENT PLATFORM</span>
+            <span style="border:1px solid rgba(255,255,255,0.2); color:#b4b7c0; padding:5px 10px">IN DEVELOPMENT</span>
+          </div>
+          <h3 style="margin:18px 0 0; font-size:clamp(26px, 3vw, 40px); font-weight:900; letter-spacing:-0.03em">Origination CRM</h3>
+          <p style="margin:14px 0 0; max-width:44ch; font-size:16px; line-height:1.62; color:#b4b7c0">Client-relationship and credit-check platform for a South African mortgage originator: pipeline tracking, consent-first credit reports drawn bureau-direct into each client record, automated client communication.</p>
+          <span style="display:inline-flex; align-items:center; gap:10px; margin-top:24px; font-size:11px; font-weight:700; letter-spacing:0.2em; color:var(--ac,#35b06a)">IN BUILD ↗</span>
+        </div>
+      </a>
+
+      <a href="#contact" data-card="1" data-reveal="1" data-delay="160" style="display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:48px; align-items:center; padding:44px 0; border-bottom:1px solid rgba(255,255,255,0.10); opacity:0; transform:translateY(24px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)">
+        <div style="position:relative; overflow:hidden; aspect-ratio:16/10; background:radial-gradient(120% 100% at 30% 0%, #141d18, #0a0e0c); display:flex; align-items:center; justify-content:center">
+          <div style="position:absolute; inset:0; background:radial-gradient(60% 60% at 72% 78%, rgba(53,176,106,0.16), transparent 70%), radial-gradient(50% 50% at 18% 85%, rgba(18,122,60,0.14), transparent 72%)"></div>
+          <div data-card-media="1" style="position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; text-align:center; padding:8%; transition:transform .8s cubic-bezier(.2,.7,.2,1)">
+            <div style="width:54px; height:54px; border:1px dashed rgba(18,122,60,0.6); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:300; color:var(--ac,#35b06a); line-height:1">+</div>
+            <div style="font-size:clamp(20px,2.4vw,30px); font-weight:900; letter-spacing:-0.03em; color:#eceef2">Coming soon…</div>
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; color:rgba(233,234,234,0.42)">THIS SPOT COULD BE YOURS</div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex; align-items:center; gap:14px; font-size:10px; font-weight:600; letter-spacing:0.18em; color:#8b8f99">
+            <sc-if value="{{ showRefCodes }}" hint-placeholder-val="{{ true }}"><span style="color:var(--ac,#35b06a)">ARB-V-03</span></sc-if>
+            <span>YOUR INDUSTRY</span>
+            <span style="border:1px solid rgba(53,176,106,0.5); color:var(--ac,#35b06a); padding:5px 10px">OPEN</span>
+          </div>
+          <h3 style="margin:18px 0 0; font-size:clamp(26px, 3vw, 40px); font-weight:900; letter-spacing:-0.03em">Coming soon…</h3>
+          <p style="margin:14px 0 0; max-width:44ch; font-size:16px; line-height:1.62; color:#b4b7c0">The next system on this list hasn't been built yet. You know what your company needs, let us build it.</p>
+          <span style="display:inline-flex; align-items:center; gap:10px; margin-top:24px; font-size:11px; font-weight:700; letter-spacing:0.2em; color:var(--ac,#35b06a)">CLAIM THIS SPOT ↗</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section data-screen-label="Name band" style="position:relative; padding:120px 32px; border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); background:linear-gradient(180deg, #0e1512, #08090c); overflow:hidden">
+    <div style="position:absolute; inset:0; display:flex; align-items:center; overflow:hidden; white-space:nowrap; pointer-events:none">
+      <div data-marquee="1" style="display:inline-flex; animation:mq 60s linear infinite; will-change:transform">
+        <span style="font-size:clamp(90px,15vw,220px); line-height:1; font-weight:300; letter-spacing:-0.02em; color:rgba(53,176,106,0.07); padding-right:60px">ἀρραβών ἀρραβών ἀρραβών</span>
+        <span style="font-size:clamp(90px,15vw,220px); line-height:1; font-weight:300; letter-spacing:-0.02em; color:rgba(53,176,106,0.07); padding-right:60px">ἀρραβών ἀρραβών ἀρραβών</span>
+      </div>
+    </div>
+    <div style="position:relative; max-width:1280px; margin:0 auto">
+      <div data-reveal="1" data-delay="0" style="opacity:0; transform:translateY(18px); transition:opacity .9s ease, transform .9s ease; font-size:11px; font-weight:700; letter-spacing:0.22em; color:var(--ac,#35b06a)">ARRABON · ἀρραβών</div>
+      <p data-reveal="1" data-delay="120" style="opacity:0; transform:translateY(22px); transition:opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1); margin:28px 0 0; max-width:22ch; font-size:clamp(30px,4.4vw,60px); line-height:1.08; font-weight:900; letter-spacing:-0.04em"><span style="color:var(--ac,#35b06a)">A pledge. A deposit.</span> The first instalment that guarantees the whole is coming.</p>
+      <p data-reveal="1" data-delay="240" style="opacity:0; transform:translateY(22px); transition:opacity 1s ease, transform 1s ease; margin:36px 0 0; max-width:56ch; font-size:16px; line-height:1.68; color:#9498a2">In ancient Greek commerce, the arrabon was the earnest — money put down in good faith as proof the rest would follow. It's how we build: something real first, running in production, before we ask anyone to believe the whole.</p>
+    </div>
+  </section>
+
+  <section id="approach" data-screen-label="How we operate" style="padding:72px 32px 80px">
+    <div style="max-width:1280px; margin:0 auto">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:32px; margin-bottom:36px">
+        <h2 style="margin:0; font-size:clamp(28px,3.6vw,48px); font-weight:900; letter-spacing:-0.04em; line-height:1">How <span style="color:var(--ac,#35b06a)">we operate</span></h2>
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.2em; color:#8b8f99">03 — METHOD</div>
+      </div>
+      <div class="mth-scroll" style="overflow-x:auto; margin:0 -32px; padding:0 32px">
+        <div class="mth-wide" style="min-width:980px">
+          <div class="mth-head" style="display:grid; grid-template-columns:repeat(5, 1fr); gap:2px">
+            <div style="background:rgba(255,255,255,0.06); padding:10px 14px; text-align:center; font-size:10px; font-weight:600; letter-spacing:0.18em; color:#b4b7c0">DISCOVERY</div>
+            <div style="background:rgba(255,255,255,0.06); padding:10px 14px; text-align:center; font-size:10px; font-weight:600; letter-spacing:0.18em; color:#b4b7c0">SCOPE &amp; TERMS</div>
+            <div style="background:rgba(255,255,255,0.06); padding:10px 14px; text-align:center; font-size:10px; font-weight:600; letter-spacing:0.18em; color:#b4b7c0">BUILD</div>
+            <div style="background:rgba(255,255,255,0.06); padding:10px 14px; text-align:center; font-size:10px; font-weight:600; letter-spacing:0.18em; color:#b4b7c0">PROVE IN PRODUCTION</div>
+            <div style="background:rgba(255,255,255,0.06); padding:10px 14px; text-align:center; font-size:10px; font-weight:600; letter-spacing:0.18em; color:#b4b7c0">OPERATE</div>
+          </div>
+
+          <div class="mth-grid" style="position:relative; display:grid; grid-template-columns:repeat(5, 1fr); grid-auto-rows:min-content; column-gap:2px; row-gap:8px; padding:22px 0 24px; background:linear-gradient(90deg, transparent calc(20% - 1px), rgba(255,255,255,0.09) calc(20% - 1px), rgba(255,255,255,0.09) 20%, transparent 20%, transparent calc(40% - 1px), rgba(255,255,255,0.09) calc(40% - 1px), rgba(255,255,255,0.09) 40%, transparent 40%, transparent calc(60% - 1px), rgba(255,255,255,0.09) calc(60% - 1px), rgba(255,255,255,0.09) 60%, transparent 60%, transparent calc(80% - 1px), rgba(255,255,255,0.09) calc(80% - 1px), rgba(255,255,255,0.09) 80%, transparent 80%)">
+
+            <div data-step="1" data-reveal="1" data-delay="0" style="grid-column:1 / span 1; grid-row:1; margin:0 10px; padding:16px 18px 18px; background:linear-gradient(150deg, var(--ac,#35b06a), #2f9c62 55%, #5fd08d); color:#08090c; box-shadow:5px 5px 0 #050607; position:relative; opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px">
+                <h3 style="margin:0; font-size:17px; font-weight:900; letter-spacing:-0.02em">One conversation</h3>
+                <span style="flex:none; width:20px; height:20px; border-radius:50%; background:#08090c; color:var(--ac,#35b06a); font-size:10px; display:flex; align-items:center; justify-content:center">1</span>
+              </div>
+              <p style="margin:9px 0 0; font-size:13px; line-height:1.5; color:rgba(8,9,12,0.82)">You walk us through how the business runs today — the messages, the spreadsheets, the misses.</p>
+            </div>
+
+            <div data-step="1" data-reveal="1" data-delay="90" style="grid-column:2 / span 1; grid-row:1; margin:0 10px; padding:16px 18px 18px; background:var(--ac,#35b06a); color:#08090c; box-shadow:5px 5px 0 #050607; opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px">
+                <h3 style="margin:0; font-size:17px; font-weight:900; letter-spacing:-0.02em">Scoped in writing</h3>
+                <span style="flex:none; width:20px; height:20px; border-radius:50%; background:#08090c; color:var(--ac,#35b06a); font-size:10px; display:flex; align-items:center; justify-content:center">2</span>
+              </div>
+              <p style="margin:9px 0 0; font-size:13px; line-height:1.5; color:rgba(8,9,12,0.82)">What gets built, what it costs, which milestones release payment.</p>
+            </div>
+
+            <div data-step="1" data-reveal="1" data-delay="180" style="grid-column:2 / span 2; grid-row:2; margin:0 10px; padding:16px 18px 18px; background:var(--ac,#35b06a); color:#08090c; box-shadow:5px 5px 0 #050607; opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px">
+                <h3 style="margin:0; font-size:17px; font-weight:900; letter-spacing:-0.02em">We build the system</h3>
+                <span style="flex:none; width:20px; height:20px; border-radius:50%; background:#08090c; color:var(--ac,#35b06a); font-size:10px; display:flex; align-items:center; justify-content:center">3</span>
+              </div>
+              <p style="margin:9px 0 0; max-width:60ch; font-size:13px; line-height:1.5; color:rgba(8,9,12,0.82)">Purpose-built for your operation, not configured from someone else's product. Delivered in weeks.</p>
+            </div>
+
+            <div data-step="1" data-reveal="1" data-delay="90" style="grid-column:3 / span 1; grid-row:3; margin:0 10px; padding:16px 18px 18px; background:var(--ac,#35b06a); color:#08090c; box-shadow:5px 5px 0 #050607; opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px">
+                <h3 style="margin:0; font-size:17px; font-weight:900; letter-spacing:-0.02em">You use it early</h3>
+                <span style="flex:none; width:20px; height:20px; border-radius:50%; background:#08090c; color:var(--ac,#35b06a); font-size:10px; display:flex; align-items:center; justify-content:center">4</span>
+              </div>
+              <p style="margin:9px 0 0; font-size:13px; line-height:1.5; color:rgba(8,9,12,0.82)">A working version in your hands while it's still cheap to change.</p>
+            </div>
+
+            <div data-step="1" data-reveal="1" data-delay="180" style="grid-column:4 / span 1; grid-row:3; margin:0 10px; padding:16px 18px 18px; background:var(--ac,#35b06a); color:#08090c; box-shadow:5px 5px 0 #050607; opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px">
+                <h3 style="margin:0; font-size:17px; font-weight:900; letter-spacing:-0.02em">Proof, then payment</h3>
+                <span style="flex:none; width:20px; height:20px; border-radius:50%; background:#08090c; color:var(--ac,#35b06a); font-size:10px; display:flex; align-items:center; justify-content:center">5</span>
+              </div>
+              <p style="margin:9px 0 0; font-size:13px; line-height:1.5; color:rgba(8,9,12,0.82)">Milestones fall due only once it runs on real work. This is the arrabon.</p>
+            </div>
+
+            <div data-step="1" data-reveal="1" data-delay="270" style="grid-column:5 / span 1; grid-row:4; margin:0 10px; padding:16px 18px 18px; background:#08090c; color:#eceef2; border:1px solid var(--ac,#35b06a); box-shadow:5px 5px 0 rgba(53,176,106,0.18); opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px">
+                <h3 style="margin:0; font-size:17px; font-weight:900; letter-spacing:-0.02em; color:var(--ac,#35b06a)">We keep it running</h3>
+                <span style="flex:none; width:20px; height:20px; border-radius:50%; background:var(--ac,#35b06a); color:#08090c; font-size:10px; display:flex; align-items:center; justify-content:center">6</span>
+              </div>
+              <p style="margin:9px 0 0; font-size:13px; line-height:1.5; color:#b4b7c0">Hosted, supported and improved on a monthly licence. We don't hand over and leave.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Client proof" style="padding:0 32px 140px">
+    <div style="max-width:1280px; margin:0 auto; border:1px solid rgba(255,255,255,0.10); padding:clamp(32px,5vw,72px); display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:48px; align-items:center">
+      <blockquote data-reveal="1" data-delay="0" style="opacity:0; transform:translateY(20px); transition:opacity .9s ease, transform .9s ease; margin:0; font-size:clamp(26px,3.4vw,44px); line-height:1.16; font-weight:900; letter-spacing:-0.035em">“I don't have to stress that something gets missed.”</blockquote>
+      <div data-reveal="1" data-delay="140" style="opacity:0; transform:translateY(20px); transition:opacity .9s ease, transform .9s ease">
+        <p style="margin:0; font-size:16px; line-height:1.68; color:#b4b7c0">Owner of a Pretoria pet-care agency, on running 40+ sitters through PetCare. Before the platform, a single job posting generated around twenty messages before every reply and schedule was handled — all of it landing on one person's phone.</p>
+        <div style="margin-top:24px; font-size:10px; font-weight:600; letter-spacing:0.18em; color:#8b8f99">VERIFIED CLIENT STATEMENT · AUG 2026 · QUOTED WITH PERMISSION</div>
+      </div>
+    </div>
+  </section>
+
+
+  <section data-screen-label="Founder" style="padding:0 32px 140px">
+    <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:56px; align-items:end">
+      <div data-reveal="1" data-delay="0" style="opacity:0; transform:translateY(22px); transition:opacity .9s ease, transform .9s ease; position:relative; aspect-ratio:4/5; overflow:hidden; background:#12161a">
+        <img src="assets/michael-cockcroft.jpg" alt="Michael Cockcroft, founder and managing director of Arrabon" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 22%; filter:grayscale(1) contrast(1.06)">
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(8,9,12,0.55), rgba(8,9,12,0) 45%)"></div>
+      </div>
+      <div data-reveal="1" data-delay="120" style="opacity:0; transform:translateY(22px); transition:opacity .9s ease, transform .9s ease">
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.2em; color:#8b8f99">04 — LEADERSHIP</div>
+        <h2 style="margin:26px 0 6px; font-size:clamp(28px,3.4vw,44px); font-weight:900; letter-spacing:-0.035em">Michael Cockcroft</h2>
+        <div style="font-size:11px; font-weight:600; letter-spacing:0.18em; color:var(--ac,#35b06a)">FOUNDER &amp; MANAGING DIRECTOR</div>
+        <p style="margin:28px 0 0; max-width:48ch; font-size:16px; line-height:1.68; color:#b4b7c0">ERP consultant turned systems builder: more than two years implementing SAP SuccessFactors for enterprise clients, now building and operating software for the businesses enterprise software ignores.</p>
+        <div style="margin-top:40px; border-top:1px solid rgba(255,255,255,0.10); padding-top:28px">
+          <div style="font-size:11px; font-weight:700; letter-spacing:0.2em; color:#8b8f99; margin-bottom:20px">WHAT WE DON'T DO</div>
+          <div style="display:grid; gap:12px; font-size:15px; line-height:1.5; color:#9498a2">
+            <div style="display:flex; gap:14px"><span style="color:var(--ac,#35b06a)">—</span>Resell or customise off-the-shelf software.</div>
+            <div style="display:flex; gap:14px"><span style="color:var(--ac,#35b06a)">—</span>Build and walk away. Every system we build, we host, operate and support.</div>
+            <div style="display:flex; gap:14px"><span style="color:var(--ac,#35b06a)">—</span>Marketing sites, e-commerce builds or app-store plays.</div>
+            <div style="display:flex; gap:14px"><span style="color:var(--ac,#35b06a)">—</span>Charge for promises. Nothing falls due before it's demonstrably working.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" data-screen-label="CTA" style="position:relative; padding:clamp(80px,10vw,140px) 32px clamp(70px,8vw,110px); border-top:1px solid rgba(255,255,255,0.08); overflow:hidden; text-align:center">
+    <div style="position:absolute; inset:0; background:radial-gradient(70% 55% at 50% 22%, rgba(53,176,106,0.13), transparent 68%)"></div>
+
+    <div style="position:relative; max-width:1000px; margin:0 auto; display:flex; flex-direction:column; align-items:center">
+      <div data-reveal="1" data-delay="0" style="opacity:0; transform:translateY(20px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); position:relative; width:clamp(170px,17vw,220px); height:clamp(170px,17vw,220px); display:flex; align-items:center; justify-content:center">
+        <div data-marquee="1" style="position:absolute; inset:0; border-radius:50%; border:1px dashed rgba(53,176,106,0.45); animation:spin 46s linear infinite"></div>
+        <div style="position:absolute; inset:13%; border-radius:50%; border:1px solid rgba(255,255,255,0.10)"></div>
+        <div data-marquee="1" style="position:absolute; inset:6%; border-radius:50%; border-top:2px solid var(--ac,#35b06a); border-right:2px solid transparent; border-bottom:2px solid transparent; border-left:2px solid transparent; animation:spin 9s linear infinite"></div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:6px">
+          <span style="font-size:clamp(26px,2.8vw,36px); font-weight:500; letter-spacing:-0.01em; color:var(--ac,#35b06a)">ἀρραβών</span>
+          <span style="font-size:9px; font-weight:700; letter-spacing:0.22em; color:#8b8f99">THE EARNEST</span>
+        </div>
+      </div>
+
+      <div data-reveal="1" data-delay="80" style="opacity:0; transform:translateY(16px); transition:opacity .9s ease, transform .9s ease; margin-top:44px; font-size:11px; font-weight:700; letter-spacing:0.22em; color:#8b8f99">READY TO TALK?</div>
+
+      <h2 data-reveal="1" data-delay="160" style="opacity:0; transform:translateY(24px); transition:opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1); margin:24px 0 0; font-size:clamp(34px,5.4vw,80px); line-height:1.02; font-weight:900; letter-spacing:-0.04em; text-wrap:balance">You know what your business needs. <span style="color:var(--ac,#35b06a)">Let's build it.</span></h2>
+
+      <p data-reveal="1" data-delay="240" style="opacity:0; transform:translateY(18px); transition:opacity .9s ease, transform .9s ease; margin:32px 0 0; font-size:clamp(17px,1.5vw,21px); line-height:1.55; color:#9498a2; max-width:44ch">No procurement process. Just a conversation about how the work actually runs.</p>
+
+      <div data-reveal="1" data-delay="320" style="opacity:0; transform:translateY(18px); transition:opacity .9s ease, transform .9s ease; display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:44px">
+        <a href="mailto:hello@arrabon.co.za" style="display:inline-flex; align-items:center; gap:10px; background:linear-gradient(120deg, var(--ac,#35b06a), #127a3c); color:#08090c; padding:19px 34px; border-radius:999px; font-size:16px; font-weight:700" style-hover="background:#eceef2">Get in touch</a>
+        <a href="#systems" style="display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,0.2); padding:19px 30px; border-radius:999px; font-size:16px; font-weight:500; color:#c9ced1" style-hover="border-color:var(--ac,#35b06a); color:var(--ac,#35b06a)">See what we've built</a>
+      </div>
+
+      <div data-reveal="1" data-delay="400" style="opacity:0; transition:opacity .9s ease; margin-top:44px; font-size:10px; font-weight:600; letter-spacing:0.18em; color:#63656e">OPERATORS IN UNDERSERVED INDUSTRIES · PRETORIA · SOUTH AFRICA</div>
+    </div>
+  </section>
+
+  <footer data-screen-label="Footer" style="padding:72px 32px 36px; border-top:1px solid rgba(255,255,255,0.10)">
+    <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:48px">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px">
+          <span style="width:6px; height:6px; background:var(--ac,#35b06a); display:block"></span>
+          <span style="font-size:14px; letter-spacing:0.22em; font-weight:900">ARRABON</span>
+        </div>
+        <div style="margin-top:18px; font-size:14px; line-height:1.7; color:#8b8f99">Brooklyn, Pretoria<br>Gauteng, South Africa</div>
+      </div>
+      <div style="display:grid; gap:12px; font-size:11px; font-weight:600; letter-spacing:0.16em; color:#9498a2">
+        <a href="#systems">SYSTEMS</a>
+        <a href="#approach">APPROACH</a>
+        <a href="#about">ABOUT</a>
+        <a href="mailto:hello@arrabon.co.za">CONTACT</a>
+      </div>
+      <div style="display:grid; gap:12px; font-size:11px; font-weight:600; letter-spacing:0.16em; color:#9498a2">
+        <a href="https://www.linkedin.com/">↗ LINKEDIN</a>
+        <a href="mailto:hello@arrabon.co.za">↗ HELLO@ARRABON.CO.ZA</a>
+        <a href="#top">↗ BACK TO TOP</a>
+      </div>
+      <sc-if value="{{ showClocks }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid; gap:10px">
+        <div style="font-size:10px; font-weight:600; letter-spacing:0.18em; color:#63656e">MARKETS ON THE ROADMAP</div>
+        <div style="display:flex; justify-content:space-between; gap:16px; font-size:11px; font-weight:600; letter-spacing:0.14em; color:#9498a2"><span>PRETORIA</span><span data-clock="Africa/Johannesburg" style="color:#eceef2">--:--</span></div>
+        <div style="display:flex; justify-content:space-between; gap:16px; font-size:11px; font-weight:600; letter-spacing:0.14em; color:#9498a2"><span>LONDON</span><span data-clock="Europe/London" style="color:#eceef2">--:--</span></div>
+        <div style="display:flex; justify-content:space-between; gap:16px; font-size:11px; font-weight:600; letter-spacing:0.14em; color:#9498a2"><span>SYDNEY</span><span data-clock="Australia/Sydney" style="color:#eceef2">--:--</span></div>
+        <div style="display:flex; justify-content:space-between; gap:16px; font-size:11px; font-weight:600; letter-spacing:0.14em; color:#9498a2"><span>NEW YORK</span><span data-clock="America/New_York" style="color:#eceef2">--:--</span></div>
+      </div>
+      </sc-if>
+    </div>
+    <div style="max-width:1280px; margin:56px auto 0; padding-top:24px; border-top:1px solid rgba(255,255,255,0.08); display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; font-size:10px; font-weight:600; letter-spacing:0.16em; color:#63656e">
+      <span>© 2026 ARRABON HOLDING. ALL RIGHTS RESERVED.</span>
+      <span>ἀρραβών · THE EARNEST, PAID FIRST</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;accent&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#35b06a&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#35b06a&quot;, &quot;#127a3c&quot;, &quot;#5fd08d&quot;, &quot;#7ed9dc&quot;], &quot;section&quot;: &quot;Look&quot; },
+  &quot;motion&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;full&quot;, &quot;options&quot;: [&quot;full&quot;, &quot;reduced&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Look&quot; },
+  &quot;showRefCodes&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Content&quot; },
+  &quot;showClocks&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Content&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount() {
+    this.applyProps();
+    this.initGlobe();
+    this.revealEl = (el) => {
+      if (el.dataset.revealed) return;
+      el.dataset.revealed = '1';
+      const d = parseInt(el.dataset.delay || '0', 10);
+      setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; }, d);
+    };
+    this.revealAllInView = () => {
+      document.querySelectorAll('[data-reveal]').forEach((el) => {
+        const r = el.getBoundingClientRect();
+        const vh = window.innerHeight || 800;
+        if (r.top < vh * 0.94 && r.bottom > -40) this.revealEl(el);
+      });
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        this.revealEl(e.target);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+    this.io = io;
+
+    this.scroller = () => {
+      const d = document.documentElement, b = document.body;
+      if (d.scrollTop > 0 || b.scrollTop > 0) return d.scrollTop > 0 ? d : b;
+      return (b.scrollHeight - b.clientHeight) > 4 ? b : d;
+    };
+    this.onScroll = () => {
+      const h = this.scroller();
+      const max = (h.scrollHeight - h.clientHeight) || 1;
+      const y = h.scrollTop;
+      this.revealAllInView();
+      const bar = document.querySelector('[data-progress]');
+      if (bar) bar.style.transform = 'scaleX(' + Math.min(y / max, 1) + ')';
+      const nav = document.querySelector('[data-nav]');
+      if (nav) {
+        const on = y > 40;
+        nav.style.background = on ? 'rgba(8,9,12,0.78)' : 'rgba(14,17,20,0.45)';
+        nav.style.borderColor = on ? 'rgba(53,176,106,0.35)' : 'rgba(255,255,255,0.12)';
+        nav.style.boxShadow = on ? '0 18px 50px rgba(0,0,0,0.55)' : '0 14px 40px rgba(0,0,0,0.35)';
+      }
+      if (this.motion !== 'reduced') {
+        const hm = document.querySelector('[data-hero-media]');
+        if (hm && y < window.innerHeight * 1.2) hm.style.transform = 'translateY(' + Math.min(y * 0.16, 180) + 'px)';
+      }
+    };
+    document.addEventListener('scroll', this.onScroll, { capture: true, passive: true });
+    window.addEventListener('resize', this.onScroll, { passive: true });
+    this.onScroll();
+    this.revealAllInView();
+    this.fallback = setTimeout(() => {
+      document.querySelectorAll('[data-reveal]').forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < (window.innerHeight || 800) * 1.1) this.revealEl(el);
+      });
+    }, 700);
+    this.sweep = setInterval(this.revealAllInView, 400);
+
+    this.cards = Array.from(document.querySelectorAll('[data-card]'));
+    this.cardHandlers = this.cards.map((card) => {
+      const media = card.querySelector('[data-card-media]');
+      const wrap = media && media.parentElement;
+      const enter = () => { if (media) media.style.transform = 'scale(1.06)'; };
+      const leave = () => { if (media) media.style.transform = 'none'; };
+      card.addEventListener('mouseenter', enter);
+      card.addEventListener('mouseleave', leave);
+      return { card, enter, leave };
+    });
+
+    this.onResize = () => {
+      const w = window.innerWidth;
+      const links = document.querySelector('[data-navlinks]');
+      const cta = document.querySelector('[data-navcta]');
+      const pill = document.querySelector('[data-nav]');
+      if (links) links.style.display = w < 620 ? 'none' : 'flex';
+      if (cta) {
+        cta.textContent = w < 480 ? 'Contact' : 'Get in touch';
+        cta.style.padding = w < 620 ? '10px 16px' : '12px 20px';
+        cta.style.fontSize = w < 620 ? '14px' : '15px';
+      }
+      if (pill) pill.style.padding = w < 620 ? '8px 8px 8px 16px' : '9px 10px 9px 20px';
+    };
+    window.addEventListener('resize', this.onResize);
+    this.onResize();
+
+    this.steps = Array.from(document.querySelectorAll('[data-step]'));
+    this.stepHandlers = this.steps.map((el) => {
+      const dark = el.style.background.indexOf('rgb(8, 9, 12)') === 0 || el.style.background === '#08090c';
+      const base = dark ? '7px 7px 0 rgba(53,176,106,0.18)' : '7px 7px 0 #050607';
+      const enter = () => { el.style.transform = 'translate(-4px,-4px)'; el.style.boxShadow = dark ? '12px 12px 0 rgba(53,176,106,0.3)' : '12px 12px 0 #050607'; };
+      const leave = () => { el.style.transform = 'none'; el.style.boxShadow = base; };
+      el.addEventListener('mouseenter', enter);
+      el.addEventListener('mouseleave', leave);
+      return { el, enter, leave };
+    });
+
+    this.tick = () => {
+      document.querySelectorAll('[data-clock]').forEach((el) => {
+        try {
+          el.textContent = new Date().toLocaleTimeString('en-GB', { timeZone: el.dataset.clock, hour: '2-digit', minute: '2-digit' });
+        } catch (err) { /* unsupported tz */ }
+      });
+    };
+    this.tick();
+    this.timer = setInterval(this.tick, 15000);
+  }
+
+  componentDidUpdate() { this.applyProps(); }
+
+  async initGlobe() {
+    const canvas = document.querySelector('[data-globe]');
+    if (!canvas || canvas.__globeRunning) return;
+    canvas.__globeRunning = true;
+    for (let i = 0; i < 100 && !(window.d3 && window.d3.geoOrthographic && window.topojson); i++) {
+      await new Promise((r) => setTimeout(r, 100));
+    }
+    if (!(window.d3 && window.d3.geoOrthographic && window.topojson)) return;
+
+    const ctx = canvas.getContext('2d', { alpha: true });
+    const proj = window.d3.geoOrthographic().rotate([0, -12, 0]).precision(0.35);
+    const path = window.d3.geoPath(proj, ctx);
+    const graticule = window.d3.geoGraticule().step([15, 15])();
+    let land = null, borders = null, size = 0, glow = null, shade = null;
+
+    const load = async (url, detailed) => {
+      try {
+        const w = await (await fetch(url)).json();
+        land = window.topojson.feature(w, w.objects.land || w.objects.countries);
+        if (detailed && w.objects.countries) borders = window.topojson.mesh(w, w.objects.countries, (x, y) => x !== y);
+      } catch (e) { /* keep whatever we have */ }
+    };
+    await load((window.__resources && window.__resources.land110) || 'https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json', false);
+    load((window.__resources && window.__resources.countries50) || 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json', true);
+
+    const resize = () => {
+      const r = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const px = Math.max(320, Math.min(Math.round(r.width * dpr), 2200));
+      canvas.width = px; canvas.height = px; size = px;
+      proj.fitExtent([[size * 0.02, size * 0.02], [size * 0.98, size * 0.98]], { type: 'Sphere' });
+      glow = ctx.createRadialGradient(size * 0.38, size * 0.34, size * 0.05, size * 0.5, size * 0.5, size * 0.52);
+      glow.addColorStop(0, 'rgba(255,255,255,0.10)');
+      glow.addColorStop(0.6, 'rgba(255,255,255,0.035)');
+      glow.addColorStop(1, 'rgba(255,255,255,0.008)');
+      shade = ctx.createRadialGradient(size * 0.34, size * 0.3, size * 0.18, size * 0.5, size * 0.5, size * 0.5);
+      shade.addColorStop(0, 'rgba(8,9,12,0)');
+      shade.addColorStop(0.72, 'rgba(8,9,12,0.35)');
+      shade.addColorStop(1, 'rgba(8,9,12,0.88)');
+    };
+    resize();
+    this.onGlobeResize = resize;
+    window.addEventListener('resize', resize);
+
+    const render = (lon) => {
+      if (!land || !size) return;
+      const w = Math.max(1, size / 1000);
+      proj.rotate([lon, -12, 0]);
+      ctx.clearRect(0, 0, size, size);
+      ctx.beginPath(); path({ type: 'Sphere' }); ctx.fillStyle = glow; ctx.fill();
+      ctx.beginPath(); path(graticule);
+      ctx.strokeStyle = 'rgba(255,255,255,0.07)'; ctx.lineWidth = w; ctx.stroke();
+      ctx.beginPath(); path(land);
+      ctx.fillStyle = 'rgba(233,234,234,0.5)'; ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.85)'; ctx.lineWidth = w * 1.25; ctx.stroke();
+      if (borders) {
+        ctx.beginPath(); path(borders);
+        ctx.strokeStyle = 'rgba(8,9,12,0.5)'; ctx.lineWidth = w * 0.9; ctx.stroke();
+      }
+      ctx.save(); ctx.beginPath(); path({ type: 'Sphere' }); ctx.clip();
+      ctx.fillStyle = shade; ctx.fillRect(0, 0, size, size); ctx.restore();
+      ctx.beginPath(); path({ type: 'Sphere' });
+      ctx.strokeStyle = 'rgba(255,255,255,0.26)'; ctx.lineWidth = w * 1.5; ctx.stroke();
+    };
+
+    // Rotation is derived from wall-clock time, so no per-frame state can stall it.
+    const t0 = performance.now();
+    let frozenAt = null;
+    canvas.__globeLastDraw = 0;
+    const frame = (now) => {
+      this.raf = requestAnimationFrame(frame);
+      const r = canvas.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > window.innerHeight + 200) return;
+      if (this.motion === 'reduced') {
+        if (frozenAt === null) { frozenAt = now; render(20 + (now - t0) * 0.0042); }
+        return;
+      }
+      if (frozenAt !== null) { frozenAt = null; }
+      canvas.__globeLastDraw = now;
+      render(20 + (now - t0) * 0.0042);
+    };
+    this.raf = requestAnimationFrame(frame);
+
+    // Browsers suspend requestAnimationFrame while the tab/preview is hidden;
+    // resume cleanly (and repaint once) when it becomes visible again.
+    this.onGlobeVisibility = () => {
+      if (document.visibilityState !== 'visible') return;
+      cancelAnimationFrame(this.raf);
+      canvas.__globeLastDraw = performance.now();
+      this.raf = requestAnimationFrame(frame);
+    };
+    document.addEventListener('visibilitychange', this.onGlobeVisibility);
+
+    // Watchdog: if the loop was cancelled (hot reload, tab restore), restart it.
+    this.globeWatchdog = setInterval(() => {
+      if (this.motion === 'reduced' || document.visibilityState !== 'visible') return;
+      if (performance.now() - canvas.__globeLastDraw > 1200) {
+        cancelAnimationFrame(this.raf);
+        this.raf = requestAnimationFrame(frame);
+      }
+    }, 2000);
+  }
+
+  applyProps() {
+    this.motion = this.props.motion || 'full';
+    document.documentElement.style.setProperty('--ac', this.props.accent || '#35b06a');
+    const paused = this.motion === 'reduced';
+    document.querySelectorAll('[data-marquee]').forEach((el) => { el.style.animationPlayState = paused ? 'paused' : 'running'; });
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.onScroll, { capture: true });
+    window.removeEventListener('resize', this.onScroll);
+    window.removeEventListener('resize', this.onResize);
+    if (this.onGlobeResize) window.removeEventListener('resize', this.onGlobeResize);
+    if (this.raf) cancelAnimationFrame(this.raf);
+    if (this.globeWatchdog) clearInterval(this.globeWatchdog);
+    if (this.onGlobeVisibility) document.removeEventListener('visibilitychange', this.onGlobeVisibility);
+    clearInterval(this.timer);
+    clearInterval(this.sweep);
+    clearTimeout(this.fallback);
+    if (this.io) this.io.disconnect();
+    (this.cardHandlers || []).forEach(({ card, enter, leave }) => {
+      card.removeEventListener('mouseenter', enter);
+      card.removeEventListener('mouseleave', leave);
+    });
+    (this.stepHandlers || []).forEach(({ el, enter, leave }) => {
+      el.removeEventListener('mouseenter', enter);
+      el.removeEventListener('mouseleave', leave);
+    });
+  }
+
+  renderVals() {
+    return {
+      showRefCodes: this.props.showRefCodes !== false,
+      showClocks: this.props.showClocks !== false
+    };
+  }
+}
+</script>
+
+<template id="__bundler_thumbnail" data-bg-color="#08090c">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#08090c"/>
+    <circle cx="880" cy="400" r="300" fill="#15191d"/>
+    <ellipse cx="880" cy="400" rx="300" ry="110" fill="none" stroke="#4a5055" stroke-width="5"/>
+    <path d="M880 100 a300 300 0 0 0 0 600 a150 300 0 0 0 0 -600" fill="none" stroke="#4a5055" stroke-width="5"/>
+    <circle cx="880" cy="400" r="300" fill="none" stroke="#3a3f44" stroke-width="6"/>
+    <circle cx="165" cy="405" r="45" fill="#35b06a"/>
+    <rect x="120" y="500" width="420" height="26" rx="13" fill="#eceef2"/>
+    <rect x="120" y="556" width="300" height="26" rx="13" fill="#35b06a"/>
+  </svg>
+</template>
+</body>
+</html>
