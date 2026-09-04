@@ -128,12 +128,12 @@ label.field span{display:block;font-size:13px;color:var(--muted);margin-bottom:6
     <h2>How to play</h2>
     <ol>
       <li><b>Pick a category.</b> A pool of items appears. Each player has <b>$20</b> and needs <b>5 picks</b>.</li>
-      <li><b>Take turns nominating.</b> The nominating player chooses an item from the pool (or types a wildcard) and sets an opening bid.</li>
-      <li><b>Bid back and forth.</b> The other player can raise by $1 or more, or pass. It keeps going until someone passes. The last bid wins the item at that price.</li>
+      <li><b>An item is revealed.</b> The game draws a random item from the category. Nobody chooses what comes up.</li>
+      <li><b>Bid back and forth.</b> Players alternate who bids first. Open with a bid, or pass. The other player raises by $1 or more, or passes. The last bid standing wins the item at that price. If both pass, the item is skipped.</li>
       <li><b>You can't go broke.</b> You must always keep at least $1 for every pick you still need. So with 5 picks to go your first bid can never exceed $16.</li>
       <li><b>When both rosters are full</b>, compare drafts and crown a winner. Wins are tracked on this device.</li>
     </ol>
-    <p class="muted small">Once a player has all 5 picks, they're out of the bidding and the other player buys remaining picks at their opening bid.</p>
+    <p class="muted small">Once a player has all 5 picks, they're out of the bidding and the other player can take or skip each item that comes up for $1.</p>
     <button class="btn primary block" id="btn-rules-close">Got it</button>
   </div>
 </div>
@@ -142,7 +142,7 @@ label.field span{display:block;font-size:13px;color:var(--muted);margin-bottom:6
 (function(){
 'use strict';
 
-const BUDGET = 20, PICKS = 5, POOL_SIZE = 14;
+const BUDGET = 20, PICKS = 5;
 
 const CATEGORIES = [
   {id:'fitness', emoji:'💪', name:'Fitness & Training', hint:'Build the ultimate program', items:[
@@ -205,41 +205,51 @@ function draftOver(){ return S.players.every(isDone); }
 function newGame(names, catId){
   const cat = CATEGORIES.find(c => c.id === catId);
   S = {
-    phase:'draft', catId,
+    phase:'auction', catId,
     players: names.map(n => ({name:n, money:BUDGET, picks:[]})),
-    pool: shuffle(cat.items).slice(0, POOL_SIZE).map(([name,em]) => ({name,em})),
-    nominator: Math.random() < .5 ? 0 : 1,
+    deck: shuffle(cat.items).map(([name,em]) => ({name,em})),
+    skipped: [],
+    opener: Math.random() < .5 ? 0 : 1,
     auction: null, log:[], winner:null
   };
-  S.log.unshift(`${S.players[S.nominator].name} nominates first (coin flip).`);
-  save(); render();
+  S.log.unshift(`${S.players[S.opener].name} bids first (coin flip).`);
+  reveal();
 }
 
-function nominate(item, openBid){
-  const n = S.nominator, p = S.players[n];
-  openBid = Math.max(1, Math.min(openBid, maxBid(p)));
-  S.pool = S.pool.filter(x => x.name !== item.name);
-  S.auction = { item, bid: openBid, holder: n, turn: other(n) };
-  S.log.unshift(`${p.name} nominates ${item.name} at ${money(openBid)}.`);
-  const o = S.players[other(n)];
-  // Opponent can't bid at all (done, or can't beat the opening bid) -> instant sale.
-  if (isDone(o) || maxBid(o) <= openBid) { sell(); return; }
+function reveal(){
+  if (!S.deck.length) { S.deck = shuffle(S.skipped); S.skipped = []; }
+  const item = S.deck.shift();
+  // Whoever opens must be able to bid; if they're full, the other player opens.
+  let o = S.opener; if (isDone(S.players[o])) o = other(o);
+  S.auction = { item, bid: 0, holder: null, turn: o, passes: 0 };
+  S.log.unshift(`🎲 Up next: ${item.name}.`);
   S.phase = 'auction'; save(); render();
 }
 
 function raise(to){
   const a = S.auction, p = S.players[a.turn];
   if (to <= a.bid || to > maxBid(p)) return;
-  a.bid = to; a.holder = a.turn; a.turn = other(a.turn);
+  a.bid = to; a.holder = a.turn; a.turn = other(a.turn); a.passes = 0;
   S.log.unshift(`${p.name} bids ${money(to)}.`);
   const next = S.players[a.turn];
-  if (maxBid(next) <= a.bid) { sell(); return; }
+  if (isDone(next) || maxBid(next) <= a.bid) { sell(); return; }
   save(); render();
 }
 
 function pass(){
-  S.log.unshift(`${S.players[S.auction.turn].name} passes.`);
-  sell();
+  const a = S.auction, p = S.players[a.turn];
+  S.log.unshift(`${p.name} passes.`);
+  if (a.holder !== null) { sell(); return; }
+  // Nobody has bid yet. Offer it to the other player unless they can't bid.
+  const o = S.players[other(a.turn)];
+  if (a.passes === 0 && !isDone(o) && maxBid(o) >= 1) { a.passes = 1; a.turn = other(a.turn); save(); render(); return; }
+  skip();
+}
+
+function skip(){
+  S.log.unshift(`⏭️ ${S.auction.item.name} goes unsold.`);
+  S.skipped.push(S.auction.item);
+  nextRound();
 }
 
 function sell(){
@@ -247,13 +257,14 @@ function sell(){
   w.money -= a.bid;
   w.picks.push({name:a.item.name, em:a.item.em, price:a.bid});
   S.log.unshift(`✅ ${w.name} wins ${a.item.name} for ${money(a.bid)}.`);
+  nextRound();
+}
+
+function nextRound(){
   S.auction = null;
   if (draftOver()) { S.phase = 'done'; save(); render(); return; }
-  // Alternate nominators; skip a player whose roster is full.
-  let next = other(S.nominator);
-  if (isDone(S.players[next])) next = other(next);
-  S.nominator = next;
-  S.phase = 'draft'; save(); render();
+  S.opener = other(S.opener);
+  reveal();
 }
 
 // ---------- rendering ----------
@@ -263,7 +274,6 @@ const resetBtn = document.getElementById('btn-reset');
 function render(){
   resetBtn.hidden = !S;
   if (!S) return renderSetup();
-  if (S.phase === 'draft') return renderDraft();
   if (S.phase === 'auction') return renderAuction();
   return renderResults();
 }
@@ -321,65 +331,32 @@ function board(activeIdx, highlightWinner){
 
 function catOf(){ return CATEGORIES.find(c => c.id === S.catId); }
 
-function renderDraft(){
-  const n = S.nominator, p = S.players[n], cat = catOf();
-  const cls = n===0 ? 'one' : 'two';
-  const mb = maxBid(p);
-  view.innerHTML = `
-    <div class="banner ${cls}"><span style="font-size:28px">${cat.emoji}</span><div><div class="big">${esc(p.name)}, nominate an item</div><div class="sub">${esc(cat.name)} · pick something you want, or something to make ${esc(S.players[other(n)].name)} overpay for.</div></div></div>
-    ${board(n)}
-    <div class="card">
-      <div class="pool" id="pool">
-        ${S.pool.map((it,i) => `<button class="item" data-i="${i}"><span class="em">${it.em}</span><span>${esc(it.name)}</span></button>`).join('')}
-        <button class="item custom" id="wild"><span class="em">✍️</span><span>Wildcard: type your own</span></button>
-      </div>
-      <div id="nomform" hidden style="margin-top:16px;text-align:center">
-        <div class="muted small">Opening bid for <b id="nomname" style="color:var(--text)"></b></div>
-        <div class="stepper"><button id="minus">−</button><div class="val" id="val">$1</div><button id="plus">+</button></div>
-        <div class="limit">You can open anywhere from $1 to ${money(mb)} (you must keep $1 for each of your other ${picksLeft(p)-1} pick${picksLeft(p)-1===1?'':'s'}).</div>
-        <div class="row"><button class="btn ghost" id="cancel">Back</button><button class="btn ${n===0?'p1':'p2'}" id="confirm">Nominate</button></div>
-      </div>
-    </div>
-    <div class="log">${S.log.slice(0,6).map(l => `<div>${esc(l)}</div>`).join('')}</div>`;
-
-  let sel = null, bid = 1;
-  const form = view.querySelector('#nomform'), pool = view.querySelector('#pool'), val = view.querySelector('#val');
-  const show = () => { val.textContent = money(bid); view.querySelector('#minus').disabled = bid<=1; view.querySelector('#plus').disabled = bid>=mb; };
-  const open = it => { sel = it; bid = 1; view.querySelector('#nomname').textContent = it.name; pool.hidden = true; form.hidden = false; show(); };
-  pool.addEventListener('click', e => {
-    const b = e.target.closest('button'); if (!b) return;
-    if (b.id === 'wild') {
-      const t = prompt('Type your wildcard item:'); if (!t || !t.trim()) return;
-      open({name:t.trim().slice(0,40), em:'✨'});
-    } else open(S.pool[+b.dataset.i]);
-  });
-  view.querySelector('#minus').addEventListener('click', () => { bid = Math.max(1, bid-1); show(); });
-  view.querySelector('#plus').addEventListener('click', () => { bid = Math.min(mb, bid+1); show(); });
-  view.querySelector('#cancel').addEventListener('click', () => { pool.hidden = false; form.hidden = true; });
-  view.querySelector('#confirm').addEventListener('click', () => nominate(sel, bid));
-}
-
 function renderAuction(){
-  const a = S.auction, t = a.turn, p = S.players[t], h = S.players[a.holder];
+  const a = S.auction, t = a.turn, p = S.players[t], cat = catOf();
   const cls = t===0 ? 'one' : 'two', mb = maxBid(p);
-  let bid = a.bid + 1;
+  const opening = a.holder === null;
+  const h = opening ? null : S.players[a.holder];
+  let bid = opening ? 1 : a.bid + 1;
+  const roundNo = S.players[0].picks.length + S.players[1].picks.length + 1;
   view.innerHTML = `
-    <div class="banner ${cls}"><span style="font-size:28px">🔨</span><div><div class="big">${esc(p.name)}, raise or pass?</div><div class="sub">Pass the phone to ${esc(p.name)}.</div></div></div>
+    <div class="banner ${cls}"><span style="font-size:28px">${opening ? '🎲' : '🔨'}</span><div><div class="big">${esc(p.name)}, ${opening ? 'open the bidding or pass' : 'raise or pass?'}</div><div class="sub">Pass the phone to ${esc(p.name)}. ${esc(cat.name)} · pick ${roundNo} of ${PICKS*2}.</div></div></div>
     ${board(t)}
     <div class="card auction">
-      <div class="muted small">Going once for</div>
+      <div class="muted small">${opening ? 'Just revealed' : 'Going once for'}</div>
       <div class="itemname">${a.item.em} ${esc(a.item.name)}</div>
-      <div class="bid">${money(a.bid)}</div>
-      <div class="holder">current high bid by <b>${esc(h.name)}</b></div>
+      ${opening
+        ? `<div class="holder">no bids yet${a.passes ? ` · ${esc(S.players[other(t)].name)} passed` : ''}</div>`
+        : `<div class="bid">${money(a.bid)}</div><div class="holder">current high bid by <b>${esc(h.name)}</b></div>`}
       <div class="stepper"><button id="minus">−</button><div class="val" id="val"></div><button id="plus">+</button></div>
       <div class="limit">Your max bid is ${money(mb)}${picksLeft(p)>1 ? ` — you must keep $1 for each of your other ${picksLeft(p)-1} pick${picksLeft(p)-1===1?'':'s'}.` : '.'}</div>
-      <div class="row"><button class="btn danger" id="pass">Pass</button><button class="btn ${t===0?'p1':'p2'}" id="raise">Bid <span id="raiseval"></span></button></div>
+      <div class="row"><button class="btn danger" id="pass">Pass</button><button class="btn ${t===0?'p1':'p2'}" id="raise">${opening ? 'Bid' : 'Raise to'} <span id="raiseval"></span></button></div>
     </div>
     <div class="log">${S.log.slice(0,6).map(l => `<div>${esc(l)}</div>`).join('')}</div>`;
+  const min = opening ? 1 : a.bid + 1;
   const val = view.querySelector('#val'), rv = view.querySelector('#raiseval');
-  const show = () => { val.textContent = money(bid); rv.textContent = money(bid); view.querySelector('#minus').disabled = bid<=a.bid+1; view.querySelector('#plus').disabled = bid>=mb; };
+  const show = () => { val.textContent = money(bid); rv.textContent = money(bid); view.querySelector('#minus').disabled = bid<=min; view.querySelector('#plus').disabled = bid>=mb; };
   show();
-  view.querySelector('#minus').addEventListener('click', () => { bid = Math.max(a.bid+1, bid-1); show(); });
+  view.querySelector('#minus').addEventListener('click', () => { bid = Math.max(min, bid-1); show(); });
   view.querySelector('#plus').addEventListener('click', () => { bid = Math.min(mb, bid+1); show(); });
   view.querySelector('#raise').addEventListener('click', () => raise(bid));
   view.querySelector('#pass').addEventListener('click', pass);
