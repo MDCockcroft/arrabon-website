@@ -53,15 +53,21 @@ const PAGE = {
 
 /* Answer options. `core` names the core module; `nav` are the sidebar items it implies. */
 const INDUSTRIES = [
-  /* Arrabon's three proven industries first, in the Systems-menu order; then the rest. */
-  { id: "fin",   label: "Finance & lending",   core: "Client pipeline and credit checks", nav: ["Pipeline", "Clients", "Reports"] },
-  { id: "fit",   label: "Health & fitness",    core: "Session calendar and team pay",   nav: ["Calendar", "Sessions", "Pay"] },
-  { id: "svc",   label: "Home & pet services", core: "Job scheduling across your team", nav: ["Jobs", "Schedule", "Team"] },
-  { id: "prop",  label: "Property",            core: "Lease and maintenance tracker",   nav: ["Leases", "Maintenance", "Tenants"] },
-  { id: "log",   label: "Logistics",           core: "Dispatch and proof of delivery",  nav: ["Dispatch", "Deliveries", "Drivers"] },
-  { id: "ret",   label: "Retail & stock",      core: "Stock, orders and reorder",       nav: ["Stock", "Orders", "Suppliers"] },
-  { id: "edu",   label: "Education",           core: "Enrolment and attendance",        nav: ["Enrolment", "Attendance", "Classes"] },
-  { id: "other", label: "Something else",      core: "Your core workflow, mapped with you", nav: ["Workflow", "Records", "Team"] }
+  /* Arrabon's three proven industries first, in the Systems-menu order; then the sectors most South African SMEs
+     operate in; then the rest. Only id and label are used today (the label is what the lead records). */
+  { id: "fin",    label: "Finance & lending",          core: "Client pipeline and credit checks", nav: ["Pipeline", "Clients", "Reports"] },
+  { id: "fit",    label: "Health & fitness",           core: "Session calendar and team pay",     nav: ["Calendar", "Sessions", "Pay"] },
+  { id: "svc",    label: "Home & pet services",        core: "Job scheduling across your team",   nav: ["Jobs", "Schedule", "Team"] },
+  { id: "ret",    label: "Retail & e-commerce",        core: "Stock, orders and reorder",         nav: ["Stock", "Orders", "Suppliers"] },
+  { id: "food",   label: "Food & hospitality",         core: "Orders, bookings and stock",        nav: ["Orders", "Bookings", "Stock"] },
+  { id: "build",  label: "Construction & maintenance", core: "Jobs, quotes and site teams",       nav: ["Jobs", "Quotes", "Crews"] },
+  { id: "agri",   label: "Agriculture & agribusiness", core: "Crops, stock and workers",          nav: ["Crops", "Stock", "Workers"] },
+  { id: "tech",   label: "Technology & digital",       core: "Clients, projects and billing",     nav: ["Clients", "Projects", "Billing"] },
+  { id: "energy", label: "Renewable energy",           core: "Installs, servicing and warranties", nav: ["Installs", "Service", "Warranties"] },
+  { id: "prop",   label: "Property",                   core: "Lease and maintenance tracker",     nav: ["Leases", "Maintenance", "Tenants"] },
+  { id: "log",    label: "Logistics",                  core: "Dispatch and proof of delivery",    nav: ["Dispatch", "Deliveries", "Drivers"] },
+  { id: "edu",    label: "Education",                  core: "Enrolment and attendance",          nav: ["Enrolment", "Attendance", "Classes"] },
+  { id: "other",  label: "Something else",             core: "Your core workflow, mapped with you", nav: ["Workflow", "Records", "Team"] }
 ];
 const PAINS = [
   { id: "wa",    label: "WhatsApp groups",        title: "Job board and alerts",       note: "Replaces the group chat" },
@@ -69,7 +75,8 @@ const PAINS = [
   { id: "paper", label: "Paper forms",            title: "Digital forms with consent", note: "Replaces paper and scans" },
   { id: "mail",  label: "Email threads",          title: "Client portal",              note: "Replaces the reply-all" },
   { id: "calls", label: "Phone calls",            title: "Self-service booking",       note: "Replaces the phone tag" },
-  { id: "head",  label: "One person knows it all", title: "Shared dashboard",          note: "Replaces “ask the owner”" }
+  { id: "head",  label: "One person knows it all", title: "Shared dashboard",          note: "Replaces “ask the owner”" },
+  { id: "other", label: "Something else",         title: "Your workflow, mapped with you", note: "We talk it through" }
 ];
 </script>
 
