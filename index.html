@@ -53,9 +53,10 @@ const PAGE = {
 
 /* Answer options. `core` names the core module; `nav` are the sidebar items it implies. */
 const INDUSTRIES = [
-  { id: "svc",   label: "Home & pet services", core: "Job scheduling across your team", nav: ["Jobs", "Schedule", "Team"] },
-  { id: "fit",   label: "Health & fitness",    core: "Session calendar and team pay",   nav: ["Calendar", "Sessions", "Pay"] },
+  /* Arrabon's three proven industries first, in the Systems-menu order; then the rest. */
   { id: "fin",   label: "Finance & lending",   core: "Client pipeline and credit checks", nav: ["Pipeline", "Clients", "Reports"] },
+  { id: "fit",   label: "Health & fitness",    core: "Session calendar and team pay",   nav: ["Calendar", "Sessions", "Pay"] },
+  { id: "svc",   label: "Home & pet services", core: "Job scheduling across your team", nav: ["Jobs", "Schedule", "Team"] },
   { id: "prop",  label: "Property",            core: "Lease and maintenance tracker",   nav: ["Leases", "Maintenance", "Tenants"] },
   { id: "log",   label: "Logistics",           core: "Dispatch and proof of delivery",  nav: ["Dispatch", "Deliveries", "Drivers"] },
   { id: "ret",   label: "Retail & stock",      core: "Stock, orders and reorder",       nav: ["Stock", "Orders", "Suppliers"] },
@@ -471,8 +472,8 @@ footer.site{background:var(--ink);color:#C9CDD4;padding:48px 0 36px;font-size:14
         <h2 id="done-h"></h2>
         <ol>
           <li><b>Michael will WhatsApp you</b> on <span data-done-phone></span> to confirm a few details.</li>
-          <li><b>Your demo is built</b> from your answers and ready within five days.</li>
-          <li><b>You try it on real work.</b> The demo is free. If you want it running for good, it's a monthly licence from there.</li>
+          <li><b>Your demo is built</b> from your answers and a quick conversation with the team.</li>
+          <li><b>You try it first.</b> The demo is free and will be ready within five days.</li>
         </ol>
       </div>
     </div>
@@ -591,9 +592,9 @@ footer.site{background:var(--ink);color:#C9CDD4;padding:48px 0 36px;font-size:14
     <div class="about-copy">
       <p class="eyebrow">About</p>
       <h2 class="sec-h" id="about-h"><span class="w">We started Arrabon</span> <span class="w">to build the software</span> <span class="w">nobody was going</span> <span class="w">to build for you.</span></h2>
-      <p>Michael Cockcroft built his career implementing enterprise systems: more than two years of deep platform work for enterprise clients across South Africa.</p>
-      <p>Along the way, a conviction wouldn’t leave him alone. If a system can make a business run better, it should be possible to build it. For anyone.</p>
-      <p>So we build those systems ourselves, and then we run them.</p>
+      <p>Michael Cockcroft built his career implementing enterprise systems for some of the biggest companies across South Africa, America and Europe.</p>
+      <p>Along the way, he realised that if a system can make a business run better, it should be made available to anyone.</p>
+      <p>So now we build those systems ourselves, and then we run them.</p>
       <p class="byline"><b>Michael Cockcroft</b><span>Founder</span></p>
     </div>
     <div class="about-side">
