@@ -1,0 +1,5 @@
+# Every search engine and AI assistant is welcome to read and cite this site.
+User-agent: *
+Allow: /
+
+Sitemap: https://arrabonservices.co.za/sitemap.xml

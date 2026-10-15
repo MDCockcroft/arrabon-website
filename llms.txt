@@ -1,0 +1,24 @@
+# Arrabon Services
+
+> Arrabon Services builds custom business software for South African small and medium businesses: systems shaped around how a business actually runs, replacing WhatsApp groups, spreadsheets and paper forms. Based in Brooklyn, Pretoria, Gauteng. Arrabon builds a free working demo within five days, then builds, hosts and supports the full system on one monthly licence.
+
+## Systems built
+
+- ITC Automation System (financial services, in build for a mortgage originator): pipeline tracking, consent-first credit reports pulled into each client record, automated client communication.
+- Personal Training Management System (fitness, live since September 2026): one calendar across every trainer, sessions logged from the phone, per-trainer pay, monthly stats and reminders.
+- Pet Sitting Management System (pet services, live since July 2026): scheduling, job posting and sitter coordination for an agency running 40+ sitters, which previously received 50 to 80 WhatsApp messages a day on one phone.
+
+## How Arrabon works
+
+1. One conversation about how the business runs today.
+2. Scope and price agreed in writing, with payment tied to milestones.
+3. The system is purpose-built, not configured from someone else's product.
+4. The client uses a working version early, while it is still cheap to change.
+5. Milestones fall due only once the system runs on real work.
+
+## Contact
+
+- Website: https://arrabonservices.co.za/
+- Email: hello@arrabonservices.co.za
+- WhatsApp: +27 79 163 6738
+- Founder: Michael Cockcroft
